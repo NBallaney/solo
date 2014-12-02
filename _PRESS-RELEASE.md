@@ -18,12 +18,14 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
-
+  Airplane Seating
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Because where you sit can make all the difference.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  Window or aisle seat? Are you afraid of turbulence? 
 
 ## Problem ##
   > Describe the problem your product solves.
@@ -36,9 +38,6 @@ Once the project moves into development, the press release can be used as a touc
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
-
-## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.

@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome Aboard!</title>
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/rank.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+
+  <body>
+    <h1> Seating preferences </h1>
+    <h3> Help us serve you better </h3>
+    <form method="post" action='/'>
+      <input type="text" placeholder="Name" name="name" class="name" required>
+      <p></p>
+      <input type="text" placeholder="I want to sit next to ..." name="name" class="name">
+      <p></p>
+      <fieldset>
+          <legend>Seat Preference</legend>
+          <p>
+            <input type="radio" name="seat" id="seat_1" value="window" />
+            <label for="seat_1">Window</label>
+          </p>
+          <p>
+            <input type="radio" name="seat" id="seat_2" value="middle" />
+            <label for="seat_2">Middle</label>
+          </p>
+          <p>
+            <input type="radio" name="seat" id="seat_3" value="aisle" />
+            <label for="seat_3">Aisle</label>
+          </p>
+      </fieldset>
+      <p></p>
+      <fieldset>
+          <legend>Location in aircraft</legend>
+          <p>
+            <input type="radio" name="location" id="location_1" value="front" />
+            <label for="location_1">Front</label>
+          </p>
+          <p>
+            <input type="radio" name="location" id="location_2" value="middle" />
+            <label for="location_2">Middle</label>
+          </p>
+          <p>
+            <input type="radio" name="location" id="location_3" value="back" />
+            <label for="location_3">Back</label>
+          </p>
+      </fieldset>
+      <p></p>
+      <fieldset>
+          <legend>About you</legend>
+          <p>
+            <input type="radio" name="hobby" id="hobby_1" value="engineer" />
+            <label for="hobby_1">Software geek</label>
+          </p>
+          <p>
+            <input type="radio" name="hobby" id="hobby_2" value="exercise" />
+            <label for="hobby_2">Exercise addict</label>
+          </p>
+          <p>
+            <input type="radio" name="hobby" id="hobby_3" value="nature" />
+            <label for="hobby_3">Nature lover</label>
+          </p>
+          <p>
+            <input type="radio" name="hobby" id="hobby_4" value="games" />
+            <label for="hobby_4">Hardcore gamer</label>
+          </p>
+          <p>
+            <input type="radio" name="hobby" id="hobby_5" value="entrepreneur" />
+            <label for="hobby_5">I'm an entrepreneur</label>
+          </p>
+      </fieldset>
+      <p></p>
+      <fieldset>
+        <p>I would like to meet someone who's a/an:</p>
+        <div class = "rankContainer">
+          <div class = "rankElement" id = "el0">
+            <input type="hidden" name="0">
+            <font class = "rankDisp" id = "el0">1</font>
+            &nbsp;&nbsp;&nbsp;
+            Software geek
+            <b class = "down">&nbsp;∨</b>
+            <b class = "up">∧&nbsp;</b>
+          </div>
+          <div class = "rankElement" id = "el1">
+            <input type="hidden" name="1">
+            <font class = "rankDisp" id = "el1">2</font>
+            &nbsp;&nbsp;&nbsp;
+            Exercise addict
+            <b class = "down">&nbsp;∨</b>
+            <b class = "up">∧&nbsp;</b>
+          </div>
+          <div class = "rankElement" id = "el2">
+            <input type="hidden" name="2">
+            <font class = "rankDisp" id = "el2">3</font>
+            &nbsp;&nbsp;&nbsp;
+            Nature lover
+            <b class = "down">&nbsp;∨</b>
+            <b class = "up">∧&nbsp;</b>
+          </div>
+          <div class = "rankElement" id = "el3">
+            <input type="hidden" name="3">
+            <font class = "rankDisp" id = "el3">4</font>
+            &nbsp;&nbsp;&nbsp;
+            Hardcore gamer
+            <b class = "down">&nbsp;∨</b>
+            <b class = "up">∧&nbsp;</b>
+          </div>
+          <div class = "rankElement" id = "el4">
+            <input type="hidden" name="4">
+            <font class = "rankDisp" id = "el4">5</font>
+            &nbsp;&nbsp;&nbsp;
+            Entrepreneur
+            <b class = "down">&nbsp;∨</b>
+            <b class = "up">∧&nbsp;</b>
+          </div>
+        </div>
+      </fieldset>
+      <p></p>
+      <div>
+        <input type="submit" value="Good to go!">
+      </div>
+    </form>
+  </body>
+</html>
