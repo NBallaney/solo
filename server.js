@@ -36,3 +36,27 @@ db.knex.schema.hasTable('Passengers').then(function(exists) {
 });
 
 app.listen(3000);
+
+// There are 3 rows with 3 columns
+
+// if has companion and companion exists
+  // if right of companion is free
+    // put him there
+  // else if left is free
+    // put him there
+
+// (column) window=0, middle=1, aisle=2
+
+// Check all rows of the column
+  // if any is free, place him there
+
+// go through remaining seats
+// store top choices for the passenger on the left/right
+// go through the remaining passengers
+  // if anyone satisfies one's top choice, place him there
+  // else do the same thing with the second choice
+
+
+
+
+
