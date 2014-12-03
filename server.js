@@ -55,11 +55,11 @@ app.post('/',function(req, res) {
           passenger.save().then(function(newPassenger) {
             passengerCollection.add(newPassenger);
           });
-  res.redirect('/');
+  res.send(201, 'Have a good flight!');
 });
 
 var passengers=[];
-
+var numOfSeats = 9; // multples of 3
 
 var seats = [ [], [], [] ];
 console.log(seats);
@@ -67,9 +67,6 @@ console.log(seats);
 var each = function (array, callback) {
 	for(var col=0; col<array.length; col++) {
 		for(var row=0; row<array.length; row++) {
-		// console.log('__________________________________________');
-		//   console.log(array[row][col]);
-		//   console.log('__________________________________________');
 			callback(array[row][col],row,col);
 		}
 	}
@@ -82,35 +79,22 @@ var assign = function (array,row,col,element) {
 	return;
 }
 
-var assignSeat= function(passenger) {
+var assignSeat = function(passenger, pos) {
   // Seating next to companion
-  // console.log('__________________________________________');
-  // console.log(passenger);
-  // console.log('__________________________________________');
    if(passenger['companion'].length>0) {
   	each(seats, function(obj,row,col) {
-  		// console.log('+++++++++++++++++++++++++++++++++++++++');
-  		// console.log(row,col);
   		if(obj!== undefined && passenger['companion'] === obj['name']) {
   			if(col+1<seats.length && seats[row][col+1] === undefined) {
-		  		// console.log('+++++++++++++++++++++++++++++++++++++++1');
-  				// console.log(seats[row][col+1], passenger);
-  				// passenger['assigned'] = true;
-  				// seats[row][col+1] = passenger;
   				assign(seats,row,col+1,passenger);
   				return;
   			} else if(col>0 && seats[row][col-1] === undefined) {
-		  		// console.log('------------------------------------1');
-		  		// console.log(row,col);
-  				// console.log(seats[row][col-1], passenger);
-  				// passenger['assigned'] = true;
-  				// seats[row][col-1] = passenger;
   				assign(seats,row,col-1, passenger);
   				return;
   			}
   		}
   	});
   }
+
   if(passenger.assigned) {
   	return;
   }
@@ -118,18 +102,35 @@ var assignSeat= function(passenger) {
 	var seatPref = passenger['seat'];
 	console.log(seatPref);
   if(seatPref !== null) {
-    for(var row=0; row<seats.length; row++) {
-    	if(seats[row][seatPref] === undefined) {
-    		seats[row][seatPref] = passenger;
+    for(var roe=0; roe<seats.length; roe++) {
+    	if(seats[roe][seatPref] === undefined) {
+    		assign(seats,roe,seatPref,passenger);
     		return;
     	}
     }
   }
 
   // According to hobbies
-  each(seats, function(obj,row,col) {
-    
-  })
+	for(var i=1; i<=options.length; i++) {
+	  each(seats, function(obj,row,col) {
+			if(obj === undefined) {
+				var prefs = [];
+				if(seats[row][col+1] !== undefined) {
+					prefs.push(seats[row][col+1]['preference'+i]);
+				} else if(seats[row][col-1] !== undefined) {
+					prefs.push(seats[row][col-1]['preference'+i]);
+				}
+				if(prefs.indexOf(passenger.hobby) !== -1){
+					assign(seats,row,col,passenger);
+					return;
+				}
+			}
+	  });
+	  if(passenger.assigned) {
+	  	return;
+	  }
+	}
+	return;
 };
 
 app.get('/final', function(req,res) {
@@ -139,11 +140,8 @@ app.get('/final', function(req,res) {
 		  passengers.push(collection[i].attributes);
 	  }
 	  console.log(passengers);
-	  for(var i=0; i<9; i++) {
-	  	// console.log('__________________________________________');
-	  	// console.log(passengers[i]);
-	  	// console.log('__________________________________________');
-	  	assignSeat(passengers[i]);
+	  for(var i=0; i<numOfSeats; i++) {
+	  	assignSeat(passengers[i],i);
 	  }
 	  console.log(seats);
 	});
