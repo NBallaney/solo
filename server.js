@@ -133,6 +133,8 @@ var assignSeat = function(passenger, pos) {
 	return;
 };
 
+
+var html;
 app.get('/final', function(req,res) {
 	passengerCollection.reset().fetch().then(function(users) {
 		collection = users.models;
@@ -143,9 +145,21 @@ app.get('/final', function(req,res) {
 	  for(var i=0; i<numOfSeats; i++) {
 	  	assignSeat(passengers[i],i);
 	  }
-	  console.log(seats);
+	  console.log('seats',seats);
+		html="";
+	  html += '<table style="border: 2px">';
+	  for(var row=0; row<seats.length; row++) {
+	  	html += "<tr>";
+	  	for(var col=0; col<seats[row].length; col++) {
+	  		var nowP = seats[row][col];
+	  		html += "<th style='background:cyan'><p>"+nowP.name+" wanted: "+nowP.seat+"</p>Frnd: "+nowP.companion+" &nbspHobby: "+nowP.hobby+" &nbspfirst: "+nowP.preference1+" &nbspsecond: "+nowP.preference2+" "+ "</th>";
+	  	}
+	  	html += "</tr>";
+	  }
+	  html += "</table>";
 	});
-  res.send(200);
+	console.log('html',html);
+  res.status(200).send(html);
 });
 
 app.listen(3000);
