@@ -18,14 +18,14 @@ db.knex.schema.hasTable('Passengers').then(function(exists) {
     db.knex.schema.createTable('Passengers', function (passenger) {
       passenger.increments('id').primary();
       passenger.string('name', 40);
+      passenger.string('companion', 10);
       passenger.string('seat', 10);
-      passenger.string('location', 10);
-      passenger.string('hobby', 15);
-      passenger.string('preference1', 15);
-      passenger.string('preference2', 15);
-      passenger.string('preference3', 15);
-      passenger.string('preference4', 15);
-      passenger.string('preference5', 15);
+      passenger.string('hobby', 30);
+      passenger.string('preference1', 30);
+      passenger.string('preference2', 30);
+      passenger.string('preference3', 30);
+      passenger.string('preference4', 30);
+      passenger.string('preference5', 30);
     }).then(function (table) {
       console.log('Created Table', table);
     });
